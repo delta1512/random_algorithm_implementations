@@ -19,8 +19,8 @@ class Tile:
         return self.contents
     def fillStatus(self):
         return self.filled
-    def changeContents(self, icon):
-        self.contents = str(icon)
+    def changeContents(self, char):
+        self.contents = str(char)
 
 for x in range(0, SizeOfAreax):
     new = []
@@ -38,26 +38,16 @@ def Render_Area():
 
 def Check_Neighbours(x, y):
     neighbours = []
-    if 0 < x < SizeOfAreax-1:
-        if not Area[x-1][y].fillStatus():
-            neighbours.append([x-1, y])
+    if 0 <= x < SizeOfAreax-1:
         if not Area[x+1][y].fillStatus():
             neighbours.append([x+1, y])
-    elif x == 0:
-        if not Area[x+1][y].fillStatus():
-            neighbours.append([x+1, y])
-    else:
+    if 0 < x <= SizeOfAreax-1:
         if not Area[x-1][y].fillStatus():
             neighbours.append([x-1, y])
-    if 0 < y < SizeOfAreay-1:
-        if not Area[x][y-1].fillStatus():
-            neighbours.append([x, y-1])
+    if 0 <= y < SizeOfAreay-1:
         if not Area[x][y+1].fillStatus():
             neighbours.append([x, y+1])
-    elif y == 0:
-        if not Area[x][y+1].fillStatus():
-            neighbours.append([x, y+1])
-    else:
+    if 0 < y <= SizeOfAreay-1:
         if not Area[x][y-1].fillStatus():
             neighbours.append([x, y-1])
     return neighbours
@@ -66,9 +56,8 @@ def Pick_Random(set):
     rand = random.randint(0, len(set)-1)
     return set[rand]
 
-initx, inity = random.randint(0, SizeOfAreax-1), random.randint(0, SizeOfAreay-1)
-Area[initx][inity].discover()
-Currentx, Currenty = initx, inity
+Currentx, Currenty = random.randint(0, SizeOfAreax-1), random.randint(0, SizeOfAreay-1)
+Area[Currentx][Currenty].discover()
 stack = []
 Area[Currentx][Currenty].changeContents('_')
 while Tile.fillCount < SizeOfAreax * SizeOfAreay:
