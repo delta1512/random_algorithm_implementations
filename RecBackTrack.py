@@ -84,4 +84,5 @@ while Tile.fillCount < SizeOfAreax * SizeOfAreay: #While there are still undisco
     Render_Area() #Print the contents of the area to the terminal
     time.sleep(0.1) #Speed of the processing (So you can actually see it run)
 Area[Currentx][Currenty].changeContents(1) #Finish by setting current as discovered
+os.system('cls' if os.name == 'nt' else 'clear')
 Render_Area()
