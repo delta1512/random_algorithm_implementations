@@ -1,5 +1,6 @@
 import random
 import time
+import os
 
 #Initialise the area for the tiles
 global Area
@@ -79,6 +80,7 @@ while Tile.fillCount < SizeOfAreax * SizeOfAreay: #While there are still undisco
         back = stack.pop() #Get the previous tile
         Currentx, Currenty = back[0], back[1] #Set it as current
     Area[Currentx][Currenty].changeContents('_') #Set a different character to show the current tile
+    os.system('cls' if os.name == 'nt' else 'clear')
     Render_Area() #Print the contents of the area to the terminal
     time.sleep(0.1) #Speed of the processing (So you can actually see it run)
 Area[Currentx][Currenty].changeContents(1) #Finish by setting current as discovered
