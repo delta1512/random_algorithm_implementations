@@ -7,5 +7,6 @@ Complete:
     - Recursive backtracking
     - Factorising a number
     - Binary search algorithm (not entirely finished)
+    - Flood fill/"Minesweeper" algorithm
 
 Planned:
