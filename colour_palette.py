@@ -4,8 +4,12 @@ from scipy.spatial import distance
 
 global hist
 image = Image.open('image.png')
-pixdata = image.load()
 size = image.size
+#if the picture is too big, make it smaller
+if size[0]*size[1] > 160000:
+    image = image.resize((400, 400), PIL.Image.ANTIALIAS)
+    size = image.size
+pixdata = image.load()
 thresh = 50
 hist = {}
 
@@ -18,10 +22,6 @@ def tuptohex(tup):
             tmp = '0' + tmp
         new.append(tmp)
     return new
-
-#if the picture is too big, make it smaller
-if size[0]*size[1] > 160000:
-    image = image.resize((400, 400), PIL.Image.ANTIALIAS)
 
 #collect a dictionary of unique pixels
 for x in range(size[0]):
