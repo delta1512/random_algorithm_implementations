@@ -1,5 +1,3 @@
-package com.aurailus.caninemusic.PaletteGrabber;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
