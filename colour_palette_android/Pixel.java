@@ -1,5 +1,3 @@
-package com.aurailus.caninemusic.PaletteGrabber;
-
 import java.util.ArrayList;
 
 class Pixel {
