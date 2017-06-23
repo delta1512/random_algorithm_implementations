@@ -1,9 +1,20 @@
 import PIL
 from PIL import Image
+from sys import argv,exit
 from scipy.spatial import distance
 
+try:
+    image = argv[1]
+except:
+    print('No image specified\nExiting...')
+    exit(0)
+
 global hist
-image = Image.open('image.png')
+try:
+    image = Image.open(image)
+except:
+    print('Image ' + image + ' could not be opened\nExiting...')
+    exit(0)
 size = image.size
 #if the picture is too big, make it smaller
 if size[0]*size[1] > 160000:
